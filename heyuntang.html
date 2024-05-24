@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>荷韵堂</title>
+    <!-- 引入title标签 -->
+	<link rel="icon" href="image/logo.png" sizes="32x32">
+    <!-- 引入common.css -->
+	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <!-- 引入carousel.css -->
+	<link rel="stylesheet" type="text/css" href="css/carousel.css"/>
+    <!-- 引入图标库 -->
+	<link rel="stylesheet" type="text/css" href="fonts/fa/css/all.css"/>
+	<!-- 引入JQuery -->
+	<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- 引入common.js -->
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<!-- 引入swiper.js -->
+	<script src="js/swiper.js" type="text/javascript" charset="utf-8"></script>
+    <!-- 引入carousel.js -->
+	<script src="js/carousel.js" type="text/javascript" charset="utf-8"></script>
+    <!-- FlexSlider -->
+	<script src="js/flexslider.js"></script>
+</head>
+<body>
+    <!-- 头部 -->
+	<div id="header">
+		<div id="header_bar">
+            <div id="nav">
+                <ul id="first_nav">
+                    <li class="first_li" id="f0"><a href="#banner">荷韵堂展厅</a></li>
+                    <li class="first_li" id="f1"><a href="#place">十堰</a></li>
+                    <li class="first_li" id="f2"><a href="#quality">阳荷</a></li>
+                    <li class="first_li" id="f3"><a href="#buy">阳荷制品</a></li>
+                    <li class="first_li" id="f4"><a href="#museum">技术实现</a>
+                </ul>
+            </div>
+                    
+            <!-- 搜索框 -->
+            <!-- 页面 质量分级 数叙田缘 · 地域特色农产品博物馆 微信标-->
+            <div id="logo1"></div> 
+            <p id="main_name">数叙田缘 · 地域特色农产品博物馆</p>
+			<div id="search">
+			    <input type="text" name="search_text" id="search_text" placeholder="请输入要搜索的内容" />
+			    <i id="search_btn" class="fas fa-search"></i>
+			</div>
+
+            <!-- 分享 -->
+            <img id="share_wb" src="/image/wx.png" alt="">
+
+			<!-- 左部导航 -->
+			<div id="bar">
+				<ul id="pre_navbar" class="navbar">
+					<li><a href="login.html">登录</a></li>
+					<li><span class="line">/</span></li>
+					<li><a href="reg.html">注册</a></li>
+				</ul>
+				<ul id="de_navbar" class="navbar">
+					<li><i class="fas fa-bell"></i></li>
+					<li><i class="fas fa-comments"></i></li>
+					<li><a href="#"><i id="myhome"></i></a></li>
+				</ul>
+			</div>
+
+            <!-- time -->
+
+    <div class="time_box"></div>
+    <script>
+        function getTime() {
+            var date = new Date();
+            var year = date.getFullYear(); //获取年份
+            var month = date.getMonth() + 1; //获取月份
+            var day = date.getDate(); //获取日期
+            return year + '年' + month + '月' + day + '日&nbsp;';
+        }
+        setInterval(function() {
+            document.querySelector('.time_box').innerHTML = getTime();
+        }, 1000)
+    </script>
+    
+
+		</div>
+	</div>
+    
+	<!-- 右侧 -->
+    <div id="left_bar">
+        <ul id="lbar_ul">
+            <li class="lbar_li">
+                <i class="fas fa-pen"></i>
+                <p>意见反馈</p>
+                </li>
+            <li class="lbar_li">
+                <i class="fas fa-tv"></i>
+                <p>客服咨询</p>
+            </li>
+            <li class="lbar_li">
+                <i class="fas fa-share-square"></i>
+                <p>分享页面</p>
+            </li>
+            <li class="lbar_li" id="hddb">
+                <i class="fas fa-arrow-up"></i>
+                <p>回到顶部</p>
+            </li>
+        </ul>
+    </div>
+    
+    <div class='modelo-wrapper'> <div style="width: 100%; padding-bottom: 56.25%; position: relative"> <div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"> <iframe src=" https://app.modaiyun.com/embedded/1776525773051576320?viewport=false&autoplay=false&autorotate=false&hideTools=false&showBIM=false&showBBoxSize=false&showKooRender=false&showSettings=false&c_at0=103.04567905083074&c_at1=49.99134961887203&c_at2=4.870421594565999&c_theta=30.938548820977143&c_phi=-0.17112362524192573&c_dis=5.5854891519782095" style="width:100%;height:100%;" frameborder="0" mozallowfullscreen webkitallowfullscreen allowfullscreen ></iframe> </div> </div> </div>
+        
+    <div id="content">
+        <div id="yh">
+            <i id="yh_photo"><img src="/image/yh1.PNG" alt=""></i>
+            <img src="/image/yh_1.PNG" alt="">
+            <img src="/image/yh_2.PNG" alt="">
+            <img src="/image/yh_3.png" alt="">
+            <img src="/image/yh_4.png" alt="">
+            <img src="/image/yh_5.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

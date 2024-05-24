@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数叙田缘</title>
+    <!-- 引入title标签 -->
+	<link rel="icon" href="image/logo.png" sizes="32x32">
+    <!-- 引入common.css -->
+	<link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <!-- 引入carousel.css -->
+	<link rel="stylesheet" type="text/css" href="css/carousel.css"/>
+    <!-- 引入图标库 -->
+	<link rel="stylesheet" type="text/css" href="fonts/fa/css/all.css"/>
+	<!-- 引入JQuery -->
+	<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- 引入common.js -->
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<!-- 引入swiper.js -->
+	<script src="js/swiper.js" type="text/javascript" charset="utf-8"></script>
+    <!-- 引入carousel.js -->
+	<script src="js/carousel.js" type="text/javascript" charset="utf-8"></script>
+    <!-- FlexSlider -->
+	<script src="js/flexslider.js"></script>
+    <!-- 引入 Vue.js 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- 引入 Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	
+</head>
+<body>
+    <!-- 头部 -->
+	<div id="header">
+		<div id="header_bar">
+            <div id="nav">
+                <ul id="first_nav">
+                    <li class="first_li" id="f0"><a href="#banner-container">首页</a></li>
+                    <li class="first_li" id="f1"><a href="#place">产地风情</a></li>
+                    <li class="first_li" id="f3"><a href="#buy">购买</a></li>
+                    <li class="first_li" id="f2"><a href="#quality">相关资讯</a></li>
+                    <li class="first_li" id="f4"><a href="#museum">展馆详情</a>
+                        <ul id="s4" class="second_nav">
+                            <li class="second_li"><a href="tianyuantang.html" target="_blank">田缘堂</a></li>
+                            <li class="second_li"><a href="heyuntang.html" target="_blank">荷韵堂</a></li>
+                            <li class="second_li"><a href="junmuju.html" target="_blank">筠牧居</a></li>
+                        </ul>		
+                    </li>
+                </ul>
+                <div class="underline"></div>
+            </div>
+                    
+            <!-- 搜索框 -->
+
+            <div id="logo1"></div> 
+            <p id="main_name">数叙田缘 · 地域特色农产品博物馆</p>
+			<div id="search">
+			    <input type="text" name="search_text" id="search_text" placeholder="请输入要搜索的内容" />
+			    <i id="search_btn" class="fas fa-search"></i>
+			</div>
+            <!-- 分享 -->
+            <img id="share_wb" src="/image/wx.png" alt="">
+
+			<!-- 左部导航 -->
+			<div id="bar">
+				<ul id="pre_navbar" class="navbar">
+					<li><a href="login.html">登录</a></li>
+					<li><span class="line">/</span></li>
+					<li><a href="reg.html">注册</a></li>
+				</ul>
+				<ul id="de_navbar" class="navbar">
+					<li><i class="fas fa-bell"></i></li>
+					<li><i class="fas fa-comments"></i></li>
+					<li><a href="#"><i id="myhome"></i></a></li>
+				</ul>
+			</div>
+
+            <!-- time -->
+        </div>
+    <div class="time_box"></div>
+    <script>
+        function getTime() {
+            var date = new Date();
+            var year = date.getFullYear(); //获取年份
+            var month = date.getMonth() + 1; //获取月份
+            var day = date.getDate(); //获取日期
+            return year + '年' + month + '月' + day + '日&nbsp;';
+        }
+        setInterval(function() {
+            document.querySelector('.time_box').innerHTML = getTime();
+        }, 1000)
+    </script>
+    <script>
+        // JavaScript 实现下划线动画和滚动监听
+        document.addEventListener('DOMContentLoaded', () => {
+            const underline = document.querySelector('.underline');
+            const navItems = document.querySelectorAll('.first_li');
+            const blocks = document.querySelectorAll('.content-block');
+
+            function updateUnderline(item) {
+                const itemRect = item.getBoundingClientRect();
+                const navRect = item.parentElement.getBoundingClientRect();
+                underline.style.width = itemRect.width + 'px';
+                underline.style.left = (itemRect.left - navRect.left) + 'px';
+            }
+
+            function clearUnderline() {
+                underline.style.width = '0';
+                underline.style.left = '0';
+            }
+
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', () => updateUnderline(item));
+                item.addEventListener('mouseleave', () => {
+                    const activeItem = document.querySelector('.first_li.active');
+                    if (activeItem) {
+                        updateUnderline(activeItem);
+                    } else {
+                        clearUnderline();
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                let currentBlock = null;
+                blocks.forEach(block => {
+                    const blockTop = block.offsetTop;
+                    if (window.scrollY >= blockTop - 60) { // 60是导航栏的高度
+                        currentBlock = block.getAttribute('id');
+                    }
+                });
+
+                if (currentBlock) {
+                    navItems.forEach(item => {
+                        const link = item.querySelector('a');
+                        if (link.getAttribute('href').substring(1) === currentBlock) {
+                            item.classList.add('active');
+                            updateUnderline(item);
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+            });
+
+            // 初始检查
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+    
+		</div>
+	</div>
+    
+	<!-- 右侧 -->
+    <div id="left_bar">
+        <ul id="lbar_ul">
+            <li class="lbar_li">
+                <i class="fas fa-tv"></i>
+                <p>客服咨询</p>
+                <img src="/image/kf.jpg" alt="客服咨询二维码" style="top: -20px;">
+            </li>
+            <li class="lbar_li">
+                <i class="fab fa-weixin icon"></i>
+                <p>公众号</p>
+                <img src="/image/gzh.png" alt="公众号二维码" style="top: 40px;">
+            </li>
+            <li class="lbar_li" id="hddb">
+                <i class="fas fa-arrow-up"></i>
+                <p>回到顶部</p>
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="content">
+        <!-- 轮播图 -->
+        <!-- 创建外部展示容器 -->
+        <div id="banner-container" class="content-block">
+            <!-- 创建图片存储容器 -->
+            <div class="banner-img-container">
+                <img src="/image/pst_yh.png" alt="">
+                <img src="/image/pst_n.png" alt="">
+                <img src="/image/pst_j.jpg" alt="">
+            </div>
+            <!-- 轮播圆点 -->
+            <div class="dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+        </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const dots = document.querySelectorAll('.dot');
+                const imgContainer = document.querySelector('.banner-img-container');
+                let currentIndex = 0;
+                const totalImages = dots.length;
+        
+                function updateDots() {
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[currentIndex].classList.add('active');
+                }
+        
+                function changeImage(index) {
+                    currentIndex = index;
+                    const offset = -index * 100;
+                    imgContainer.style.transform = `translateX(${offset}vw)`;
+                    updateDots();
+                }
+        
+                dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        changeImage(Number(dot.getAttribute('data-index')));
+                    });
+                });
+        
+                // 自动轮播
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % totalImages;
+                    changeImage(currentIndex);
+                }, 3000); // 3秒切换一次
+            });
+        </script>
+
+        <!-- 产地展示 -->
+        <div id="place" class="content-block">
+            <br><br><br>
+            <div class="title-txt">
+                <img id="txt-left" src="/image/wz1.png" alt="">
+                <span id="h-title">地域特色农产品 · 产地风情</span>
+                <img id="txt-right" src="/image/wz2.png" alt="">
+            </div>
+            <br>
+            <div class="map_bar">
+                <span class="province" style="position: absolute; top: 490px; left: 540px;">湖北省</span>
+                <span class="province" style="position: absolute; top: 490px; left: 400px;">四川省</span>
+                <span class="province" style="position: absolute; top: 460px; left: 610px;">安徽省</span>
+                <span id="sy" class="area" style="position: absolute; top: 470px; left: 530px;">十堰</span>
+                <div id="bar-hover-sy">
+                    <img id="img-hover" src="/image/yh.png" alt="">
+                    <p>湖北十堰的阳荷，香味独特，根茎富含姜黄素，具有抗氧化、抗炎、抗菌功效。食用价值极高，可用于调味各类菜肴，增添美味和营养。常见于烹制海鲜、肉类及汤品中。阳荷姜还可制成茶饮，有助于增强免疫力、促进消化。是一种药食两用的珍贵植物，深受人们喜爱。</p>
+                </div>
+                <span id="jl" class="area" style="position: absolute; top: 532px; left: 440px;">筠连</span>
+                <div id="bar-hover-jl">
+                    <img id="img-hover" src="/image/sp_nr.png" alt="">
+                    <p>四川筠连的黄牛肉，苗岭自然放养，肉质鲜美，口感细腻，风味独特，脂肪分布均匀，富含优质蛋白质和维生素。在四川菜系中，常见黄牛肉的经典菜肴有麻辣黄牛肉、红烧黄牛肉等。黄牛肉烹饪后保持原汁原味，香气扑鼻，回味无穷。筠连黄牛肉以其鲜美的口感和营养价值成为四川地区的地方美食之一。</p>
+                </div>
+                <span id="aq" class="area" style="position: absolute; top: 495px; left: 617px;">安庆</span>
+                <div id="bar-hover-aq">
+                    <img id="img-hover" src="/image/sp_lm2.png" alt="">
+                    <p>安徽安庆的蓝莓，果实饱满，色泽艳丽，口感清爽酸甜，富含维生素C、维生素K和抗氧化剂。安庆地区土壤肥沃，气候湿润，适宜蓝莓生长，蓝莓被广泛用于制作果酱，也可直接食用或加入沙拉中。其独特的风味和丰富的营养使其备受青睐。</p>
+                </div>
+                <span id="tl" class="area" style="position: absolute; top: 490px; left: 647px;">铜陵</span>
+                <div id="bar-hover-tl">
+                    <img id="img-hover" src="/image/j.png" alt="">
+                    <p>安徽铜陵的白姜，根茎洁白，质地鲜脆，味道清香辛辣，富含姜黄素和挥发油。铜陵地区土壤肥沃，气候适宜，是白姜生长的理想之地。白姜被广泛用于烹饪和药用，具有驱寒、解毒、促消化等功效，在中医药中有着重要地位；其辛辣的味道和特殊的香气也为菜肴增添独特风味。铜陵白姜以其独特的品质和多样的用途成为当地的特色调味佳品。</p>
+                </div>
+                <span class="circle" style="position: absolute; top: 468px; left: 530px;"></span>
+                <span class="circle" style="position: absolute; top: 546px; left: 449px;"></span>
+                <span class="circle" style="position: absolute; top: 506px; left: 620px;"></span>
+                <span class="circle" style="position: absolute; top: 496px; left: 640px;"></span>
+                <br><br><br><br>
+                <div id="map_photo"><img src="/image/map.png" alt=""></div>
+            </div>    
+        </div>
+
+        <!-- 购买详情 -->
+        <div id="buy" class="content-block">
+            <br><br><br><br><br><br>
+            <div class="title-txt">
+                <img id="txt-left" src="/image/wz1.png" alt="">
+                <span id="h-title">地域特色农产品 · 购买</span>
+                <img id="txt-right" src="/image/wz2.png" alt="">
+            </div>
+            <div id="left_menu">
+                <h2>精选分类</h2>
+                <ul id="left_menu_ul">
+                    <li class="left_menu_li">四立优粮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a></li>
+                    <li class="left_menu_li">本草菁选&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a></li>
+                    <li class="left_menu_li">蕃牧集萃&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a></li>
+                    <li class="left_menu_li">四海纲目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a></li>
+                    <li class="left_menu_li">阳荷分区&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</a></li>
+                </ul>
+            </div>
+
+            <div class="buy-search">
+                    <div class="search-m">
+                        <input class="form" type="text" placeholder="  阳荷/耙耙柑">
+                        <button class="s-button">搜索</button>
+                        <button class="chart">
+                            <img src="/image/chart.png" alt="" style="height: 16px; width: 18px; position: relative; top: 2px;">
+                            <span style="top: -7px;">&nbsp;我的购物车</span>
+                        </button>
+                    </div>
+            </div> 
+            <br><br>
+            <img src="/image/sp_center.png" alt="" style="position: relative; left: 2.45%; height: auto; width: 60%;">
+            <img src="/image/sp_left.png" alt="" style="position: relative; left: 2.2%; width: 22%; height: auto;">
+            <div id="pzbz">
+                <h3>——特产头条——</h3>
+                <div id="new-tag">新</div>
+                <a href="#lm">&nbsp;安徽安庆蓝莓上新</a>
+                <br>
+                <span id="new-tag">新</span>
+                <a href="#nrj">&nbsp;四川筠连牛肉酱上新</a>
+            </div>
+
+            <div class="title-txt2">
+                <img id="txt-left" src="/image/title_pa_l.png" alt="">
+                <span id="h-title">本 / 草 / 菁 / 选</span>
+                <img id="txt-right" src="/image/title_pa_r.png" alt="">
+                <br>
+                <p style="margin-top: 5px;">本草精华，健康之选</p>
+                <br>
+            </div>
+            <figure class="figure1">
+                <a href="#"><img class="img1" src="image/yh.png" alt='阳荷姜'>
+                <figcaption><strong class='title'>&lt;十堰阳荷 阳荷姜&gt;</strong>野洋姜现摘时令新鲜当季农产绿色蔬菜包邮现挖</figcaption>
+                <span id="vendor">湖北十堰农产品旗舰店</span>
+                <span id="prov">湖北</span>
+                <div>
+                <span class='price'>¥ <strong>6.8/斤</strong> 起</span>
+                <em class='sat'>满意度99%</em>
+                </div>
+                <div class="type"S>
+                    绿色无污染
+                </div>
+            </figure>
+    
+            <figure class="figure1" id="lm">
+                <a href="#"><img class="img1" src="image/sp_lm2.png" alt='蓝莓'></a>
+                <figcaption><strong class='title'>&lt;安徽安庆蓝莓&gt;</strong>正宗安徽全国蓝莓之乡安庆新鲜蓝莓当季水果饱满多汁宝宝辅食</figcaption>
+                <span id="vendor">安庆农产品旗舰店</span>
+                <span id="prov">安徽</span>
+                <div>
+                <span class='price'>¥ <strong>38.8</strong> 起</span>
+                <em class='sat'>满意度99%</em>
+                </div>
+                <div class="type">
+                    绿色无污染
+                </div>
+            </figure>
+    
+            <figure class="figure1">
+                <a href="#"><img class="img1" src="image/sp_nr.png" alt='黄牛肉'></a>
+                <figcaption><strong class='title'>&lt;四川筠连黄牛肉&gt;</strong>黄牛里脊肉新鲜牛肉筠连天然黄牛肉国家地理标志名品新鲜包邮...</figcaption>
+                <span id="vendor">筠连农产品旗舰店</span>
+                <span id="prov">四川</span>
+                <div>
+                <span class='price'>¥ <strong>35.8</strong> 起</span>
+                <em class='sat'>满意度99%</em>
+                </div>
+                <div class="type">
+                    绿色无污染
+                </div>
+            </figure>
+    
+            <figure class="figure1">
+                <a href="#"><img class="img1" src="image/sp_yh.png" alt='泡椒阳荷'>
+                <figcaption><strong class='title'>&lt;十堰泡椒阳荷&gt;</strong>泡椒阳荷湖北十堰酸阳荷姜洋禾姜阳霍整个开胃酸菜下饭菜钦点</figcaption>
+                <span id="vendor">湖北十堰农产品旗舰店</span>
+                <span id="prov">湖北</span>
+                <div>
+                <span class='price'>¥ <strong>13.8</strong> 起</span>
+                <em class='sat'>满意度99%</em>
+                </div>
+                <div class="type"S>
+                    绿色无污染
+                </div>
+            </figure>
+
+            <figure class="figure2">
+                <a href="#"><img class="img2" src="image/sp_lm.png" alt='蓝莓酱'>
+                <figcaption><strong class='title'>&lt;安徽花山蓝莓酱&gt;</strong>安徽安庆花山村蓝莓果酱0脂肪纯熬蓝莓果酱0蔗糖</figcaption>
+                <span id="vendor">江西蓝莓水果旗舰店</span>
+                <span id="prov">江西</span>
+                <div>
+                <span class='price'>¥ <strong>38.8</strong> 起</span>
+                <em class='sat'>满意度99%</em>
+                </div>
+                <div class="type"S>
+                    健康无添加
+                </div>
+            </figure>
+    
+            <figure class="figure2">
+                <a href="#"><img class="img2" src="image/sp_j.png" alt='糖醋姜'></a>
+                <figcaption><strong class='title'>&lt;安徽铜陵糖醋姜&gt;</strong>安徽特产铜陵糖醋嫩姜泡姜新鲜嫩白姜即食腌制酱汁嫩姜芽</figcaption>
+                <span id="vendor">安徽农产品旗舰店</span>
+                <span id="prov">安徽</span>
+                <div>
+                <span class='price'>¥ <strong>28</strong> 起</span>
+                <em class='sat'>满意度99%</em>
+                </div>
+                <div class="type">
+                    健康无添加
+                </div>
+            </figure>
+    
+            <figure class="figure2">
+                <a href="#"><img class="img2" src="image/sp_j2.png" alt='酱汁生姜'></a>
+                <figcaption><strong class='title'>&lt;安徽铜陵酱汁生姜&gt;</strong>齐松安徽特产铜陵白姜酱汁生姜原产地腌制罐装糖醋酸甜泡嫩</figcaption>
+                <span id="vendor">安徽农产品旗舰店</span>
+                <span id="prov">安徽</span>
+                <div>
+                <span class='price'>¥ <strong>29.8</strong> 起</span>
+                <em class='sat'>满意度99%</em>
+                </div>
+                <div class="type">
+                    健康无添加
+                </div>
+            </figure>
+
+            <figure class="figure2">
+                <a href="#"><img class="img2" src="image/sp_yh2.png" alt='阳荷泡菜'></a>
+                <figcaption><strong class='title'>&lt;湖北十堰阳荷姜咸菜&gt;</strong>湖北十堰特产农家泡制阳荷姜咸菜下饭菜荷莲花姜笋洋河姜</figcaption>
+                <span id="vendor">湖北十堰农产品旗舰店</span>
+                <span id="prov">湖北</span>
+                <div>
+                <span class='price'>¥ <strong>18.9</strong> 起</span>
+                <em class='sat'>满意度99%</em>
+                </div>
+                <div class="type">
+                    健康无添加
+                </div>
+            </figure>
+        </div>
+
+        <!-- 相关资讯 -->
+        <div id="quality" class="content-block">
+            <br><br><br><br>
+            
+            <!-- 山水图片 -->
+            <div id="shanshui-image">
+                <div class="overlay">
+                    <div class="title-txt">
+                        <img id="txt-left" src="/image/wz1.png" alt="">
+                        <span id="h-title" style="font-size: 55px;">地域特色农产品 · 相关资讯</span>
+                        <img id="txt-right" src="/image/wz2.png" alt="">
+                    </div>
+                    <div class="right">
+                        <i class="fas fa-landmark"></i><span>开发宗旨</span>
+                        <i class="fas fa-seedling"></i><span>产品案例</span>
+                        <i class="fas fa-paper-plane"></i><span>技术实现</span>
+                    </div>
+                </div>    
+            </div>
+            <div class="content-section">
+                <div class="title-txt">
+                    <img id="txt-left" src="/image/wz1.png" alt="">
+                    <span id="h-title" style="font-size: 45px;">开发宗旨</span>
+                    <img id="txt-right" src="/image/wz2.png" alt="">
+                </div>
+                <p>
+                    为广大消费者提供最优质的地域特色农产品，满足广大消费者对于饮食健康的追求，是数叠田缘团队的宗旨与目标。
+                    为此，我们开发了高质量地域特色农产品系列——“四立优粮”。
+                    针对不同类型地域特色农产品，我们分析产品各项指标，制定了科学的地域特色农产品质量分级标准。
+                    我们综合运用农产品光学图像识别和产品近红外光谱检测技术，从农产品的外观形态和内部成分维度实现严格把控产品质量。
+                    我们的“四立优粮”产品系列，依据质量分级标准，真正实现买的方便，吃得放心！
+                </p>
+
+                <br><br><br><br><br>
+
+                <div class="title-txt">
+                    <img id="txt-left" src="/image/wz1.png" alt="">
+                    <span id="h-title" style="font-size: 45px;">系列产品案例</span>
+                    <img id="txt-right" src="/image/wz2.png" alt="">
+                </div>
+                <br>
+                <div class="info-block">
+                    <img src="/image/yh1.PNG" alt="阳荷图片">
+                    <div class="info-content">
+                        <h1 style="text-align: center;">房县阳荷</h1>
+                        <p>十堰市房县野人谷镇毗邻神农架，阳荷作物在纯天然的环境下种植，无任何农药使用。团队精选来自房县的自然阳荷。从饱满度、外观、生长情况等角度，团队精选生产地高质量阳荷原料，保证产品质量，为广大消费者提供最高质量的阳荷产品。</p>
+                        <br>
+                        <a href="https://mp.weixin.qq.com/s/5WWQ--t4cr7gbX3v1GgHEw" target="_blank" class="link-button">了解更多十堰阳荷故事</a>
+                    </div>
+                </div>
+                <br><br>
+                <div class="info-block">
+                    <div class="info-content">
+                        <h1 style="text-align: center;">筠连黄牛</h1>
+                        <p style="margin-right: 25px;">来自四川筠连县的自然黄牛，在饲养之初便受到精心呵护，辅以地方特色筠连茶叶所喂养，以保证日后肉类品质达到最佳。黄牛成熟后，其肉制品在肉质色泽、元素含量等指标上经过多重检验和筛选后，其中最优质的肉类才得以在市场上流通，走进千家万户。</p>
+                        <br>
+                        <a href="https://mp.weixin.qq.com/s/3fg5Kmugi27aiU_BWjVhLA" target="_blank" class="link-button">了解更多筠连黄牛故事</a>
+                    </div>
+                    <img src="/image/zlfj_3.png" alt="描述图片">
+                </div>
+                <br><br>
+                <div class="info-block">
+                    <img src="/image/j.png" alt="白姜图片">
+                    <div class="info-content">
+                        <h1 style="text-align: center;">铜陵白姜</h1>
+                        <p>铜陵白姜是铜陵“八宝”之一，多年生草本植物，一年生栽培作物。铜陵气候温和、雨量充沛、四季分明，是白姜优质种质资源区和优质名产区。铜陵生姜以“块大皮薄，汁多渣少，肉质脆嫩，香味浓郁”等特色而久负盛名。</p>
+                        <br>
+                        <a href="https://mp.weixin.qq.com/s/jLzc-y0meQ6ieU9yWP3y9Q" target="_blank" class="link-button">了解更多铜陵白姜故事</a>
+                    </div>
+                </div>
+
+
+                <br><br><br><br><br>
+                </i><h1 style="margin-bottom: 10px;">点击框图了解详细技术资讯</h1><i class="fas fa-arrow-down fa-2x"></i>
+                <div id="header_menu">
+                    <ul id="header_menu_ul">
+                        <li class="header_menu_li" data-target="block1">特色农产品知识图谱构建</li>
+                        <li class="header_menu_li" data-target="block2">元宇宙搭建技术</li>
+                        <li class="header_menu_li" data-target="block3">团队实地调研</li>
+                        <li class="header_menu_li" data-target="block4">领域专家权威认证</li>
+                    </ul>
+                </div>
+                <div id="block1" class="quality-block">
+                    <div class="info-block" style="height: 50%;">
+                        <video controls>
+                            <source src="/video/zstp.mp4" type="video/mp4">
+                            您的浏览器不支持视频标签。
+                        </video>                        
+                        <div class="info-content">
+                            <h1 style="text-align: center;">特色农产品知识图谱构建</h1>
+                            <p>数叙田缘团队针对农产品产地特色，制定调研计划，通过实地考察、网络爬虫，线上、线下同步收集数据，构建庞大地域特色农产品专业知识库。</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div id="block2" class="quality-block">
+                    <div class="info-block">
+                        <img src="/image/vr.png" alt="vr应用图片" style="width: 68%; height: auto;">
+                        <div class="info-content">
+                            <h1 style="text-align: center;">元宇宙搭建技术</h1>
+                            <p>数叙田缘团队根据当地农业特色，构建地域特色农产品展厅。展厅目前已实现vr观览、互动，可以近距离沉浸式观看展馆细节，了解农产品及背后故事。</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div id="block3" class="quality-block">
+                    <div class="info-block">
+                        <img src="/image/sj1.jpg" alt="团队实地调研图片" style="width: 68%; height: auto;">
+                        <img src="/image/sj2.jpg" alt="团队实地调研图片" style="width: 68%; height: auto; display: none;">
+                        <img src="/image/sj3.jpg" alt="团队实地调研图片" style="width: 68%; height: auto; display: none;">
+                        <div class="info-content">
+                            <h1 style="text-align: center;">团队实地调研</h1>
+                            <p>数叙田缘团队前往特色农产品产地实地考察，在政府部门工作人员的带领下，近距离接触阳荷，通过与当地农民的沟通了解它的生长习性和地域故事。</p>
+                            <a href="https://mp.weixin.qq.com/s/vdr6HHbBo2ncokQcehCY_g" target="_blank" class="link-button">了解更多团队实践详情</a>
+                            <br>
+                        </div>
+                    </div>
+                    <script>
+                        const images = document.querySelectorAll('.info-block img');
+                
+                        // 点击图片切换
+                        images.forEach(image => {
+                            image.addEventListener('click', () => {
+                                // 隐藏当前图片
+                                images.forEach(img => {
+                                    img.style.display = 'none';
+                                });
+                
+                                // 显示下一张图片（循环播放）
+                                const nextIndex = (Array.from(images).indexOf(image) + 1) % images.length;
+                                images[nextIndex].style.display = 'block';
+                            });
+                        });
+                    </script>
+                </div>
+                <div id="block4" class="quality-block">
+                    <div class="info-block">
+                        <img src="/image/zstp.png" alt="领域专家权威认证" style="width: 68%; height: auto;">
+                        <div class="info-content">
+                            <h1 style="text-align: center;">领域专家权威认证</h1>
+                            <p>数叙田缘团队根据当地农业特色，构建地域特色农产品专业知识库</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.querySelectorAll('#header_menu_ul li').forEach(menuItem => {
+                        menuItem.addEventListener('click', () => {
+                            // 隐藏所有内容块
+                            document.querySelectorAll('.quality-block').forEach(block => {
+                                block.style.display = 'none';
+                            });
+            
+                            // 显示对应的内容块
+                            const targetId = menuItem.getAttribute('data-target');
+                            document.getElementById(targetId).style.display = 'block';
+                        });
+                    });
+                </script>
+            </div>
+            
+            <br><br><br><br><br>
+        </div>
+
+        <div class="title-txt">
+            <img id="txt-left" src="/image/wz1.png" alt="">
+            <span id="h-title" style="font-size: 55px;">地域特色农产品 · 展馆详情</span>
+            <img id="txt-right" src="/image/wz2.png" alt="">
+        </div>
+        <br>
+        <div id="museum" class="content-block">
+            
+            <div class="image-block" id="block1">
+                <a href="junmuju.html" target="_blank">
+                    <div class="overlay"></div>
+                    <img src="/image/m_hn.png" alt="筠牧居展馆一览图">
+                    <div class="text">筠
+                                      牧
+                                      居</div>
+                </a>
+            </div>
+            <div class="image-block" id="block2">
+                <a href="#">
+                    <div class="overlay"></div>
+                    <img src="/image/m_j.png" alt="白姜馆展馆一览图" >
+                    <div class="text">白
+                                      姜
+                                      馆</div>
+                </a>
+                <div class="text" style="font-size: large; top: 80%;">（ 待开发 ）</div>
+            </div>
+            <div class="image-block" id="block3">
+                <a href="heyuntang.html" target="_blank">
+                    <div class="overlay"></div>
+                    <img src="/image/m-yh.png" alt="荷韵堂展馆一览图">
+                    <div class="text">荷
+                                      韵
+                                      堂</div>
+                </a>
+            </div>
+            <div class="image-block" id="block4">
+                <a href="#">
+                    <div class="overlay"></div>
+                    <img src="/image/m_lm.png" alt="蓝莓馆展馆一览图">
+                    <div class="text">蓝
+                                      莓
+                                      馆</div>
+                </a>
+                <div class="text" style="font-size: large; top: 80%;">（ 待开发 ）</div>
+            </div>
+        
+            <script src="script.js"></script>
+        </div>
+
+    </div>
+
+
+
+    
+</body>
+</html>
